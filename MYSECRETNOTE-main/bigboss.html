@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySecretNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bigboss.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">MSN</div>
+            <div class="navigation">
+                <a href="#" onclick="showEncrypt()">Encrypt</a>
+                <a href="#" onclick="showDecrypt()">Decrypt</a>
+                <a href="#" onclick="showFileOptions()">File Options</a>
+                <a href="{{ url_for('view_saved_notes') }}">View Saved Notes</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <h1>Welcome to MySecretNotes</h1>
+
+            <!-- Encryption Section -->
+            <div id="encryptSection" class="feature-section">
+                <h2>Encryption</h2>
+                <textarea id="note" placeholder="Write your note here..." required></textarea>
+                <input type="text" id="key" placeholder="Enter encryption key" required>
+                <input type="text" id="fileNameEncrypt" placeholder="Enter file name to save (without extension)" required>
+                <select id="cipherSelect">
+                    <option value="vigenere">Vigenère Cipher</option>
+                    <option value="caesar">Caesar Cipher</option>
+                </select>
+                <div class="button-container">
+                    <button class="encrypt-button" onclick="encryptNote()">Encrypt</button>
+                    <button class="save-button" onclick="saveEncryptToFile()">Save to File</button>
+                    <button class="copy-button" onclick="copyToClipboard('output')">Copy Encrypted Text</button>
+                    <button class="save-db-button" onclick="saveToDatabase('encrypt')">Save to Database</button>
+                </div>
+                <div class="output" id="output"></div>
+            </div>
+
+            <!-- Decryption Section -->
+            <div id="decryptSection" class="feature-section">
+                <h2>Decryption</h2>
+                <textarea id="noteDecrypt" placeholder="Enter the encrypted note here..." required></textarea>
+                <input type="text" id="keyDecrypt" placeholder="Enter decryption key" required>
+                <select id="cipherSelectDecrypt">
+                    <option value="vigenere">Vigenère Cipher</option>
+                    <option value="caesar">Caesar Cipher</option>
+                </select>
+                <div class="button-container">
+                    <button class="decrypt-button" onclick="decryptNote()">Decrypt</button>
+                    <button class="paste-button" onclick="pasteFromClipboard('noteDecrypt')">Paste</button>
+                </div>
+                <div class="output" id="outputDecrypt"></div>
+            </div>
+
+            <!-- File Options Section -->
+            <div id="fileOptionsSection" class="feature-section">
+                <h2>File Options</h2>
+                <input type="file" id="fileInput" onchange="loadFromFile()">
+                <input type="text" id="keyFile" placeholder="Enter decryption key for the file" required>
+                <select id="cipherSelectFile">
+                    <option value="vigenere">Vigenère Cipher</option>
+                    <option value="caesar">Caesar Cipher</option>
+                </select>
+                <div class="button-container">
+                    <button class="decrypt-file-button" onclick="loadFromFile()">Decrypt File</button>
+                </div>
+                <div class="output" id="outputFile"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='bigboss.js') }}"></script>
+</body>
+</html>

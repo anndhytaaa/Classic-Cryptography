@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - MySecretNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <script>
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('main > section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = section.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h2 class="logo">MySecretNotes</h2>
+        <nav class="navigation">
+            <a href="#" onclick="toggleSection('home')">Home</a>
+            <a href="#" onclick="toggleSection('about')">About</a>
+            <a href="#" onclick="toggleSection('service')">Service</a>
+            <a href="#" onclick="toggleSection('references')">References</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" style="display: block;">
+            <h1>Welcome to MySecretNotes</h1>
+            <p>Secure your notes with advanced encryption and decryption features.</p>
+        </section>
+
+        <section id="about" style="display: none;">
+            <h2>About</h2>
+            <p>
+                Selamat datang di <strong>MySecretNotes</strong>, sebuah website inovatif yang dikembangkan oleh tim mahasiswa Politeknik Negeri Batam. Proyek ini dipimpin oleh:
+            </p>
+            <ul>
+                <li><strong>Wali Khansah Shodik</strong> (NIM: 4332401014) - Ketua Tim</li>
+            </ul>
+            <p>Dengan anggota tim:</p>
+            <ul>
+                <li><strong>Belbi Lina Oktavia Simarmata</strong> (NIM: 4332401010)</li>
+                <li><strong>Dwita Puspa Rini</strong> (NIM: 4332401019)</li>
+                <li><strong>Muhammad Edi Oldy</strong> (NIM: 4332401012)</li>
+            </ul>
+            <p>
+                Kami berkomitmen untuk menyediakan solusi praktis dalam mengamankan catatan pribadi Anda menggunakan teknologi enkripsi modern. website ini dirancang dengan antarmuka yang ramah pengguna, memastikan pengalaman yang optimal dalam menjaga privasi dan keamanan data Anda.
+            </p>
+        </section>
+
+        <section id="service" style="display: none;">
+            <h2>Service</h2>
+            <p>MySecretNotes adalah website inovatif yang dirancang untuk menjaga keamanan catatan Anda melalui fitur enkripsi dan dekripsi. Dengan layanan ini, Anda dapat:</p>
+            <ul>
+                <li>Menulis catatan yang aman dengan enkripsi berbasis algoritma seperti Vigenère Cipher.</li>
+                <li>Menyimpan catatan Anda secara lokal sebagai file atau ke dalam database untuk kemudahan akses.</li>
+                <li>Mengelola catatan yang telah disimpan, baik dalam bentuk terenkripsi maupun setelah dekripsi.</li>
+            </ul>
+            <p>Layanan ini memastikan bahwa catatan pribadi Anda tetap rahasia dan hanya dapat diakses dengan kunci enkripsi yang Anda buat. Dengan antarmuka yang ramah pengguna, MySecretNotes cocok untuk siapa saja yang memprioritaskan privasi dan keamanan data.</p>
+        </section>
+
+        <section id="references" style="display: none;">
+            <h2>References</h2>
+            <p>Untuk mendukung pengembangan website ini, kami menggunakan referensi berikut:</p>
+            <ul>
+                <li>
+                    <a href="https://pbl.polibatam.ac.id/" target="_blank">SIAP-PBL | Sistem Informasi Aktivitas Proyek - PBL</a> - Platform resmi untuk manajemen proyek berbasis pembelajaran di Politeknik Negeri Batam.
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher" target="_blank">Vigenère cipher - Wikipedia</a> - Artikel yang menjelaskan konsep dan sejarah Vigenère cipher.
+                </li>
+                <li>
+                    <a href="https://github.com/gabriel-ribeiro-data/Vigenere-Cipher-Python" target="_blank">Vigenère Cipher Python Implementation - GitHub</a> - Implementasi cipher Vigenère dalam bahasa Python.
+                </li>
+                <li>
+                    <a href="https://github.com/mysql/mysql-server" target="_blank">MySQL Server - GitHub</a> - Repositori resmi MySQL Server, sistem manajemen basis data relasional open-source.
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MySecretNotes. PBL-RKS109</p>
+    </footer>
+</body>
+</html>

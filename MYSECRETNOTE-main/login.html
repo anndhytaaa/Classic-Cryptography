@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MySecretNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="login-box">
+            <h2>Login</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span> 
+                    <input type="email" name="email" required placeholder=" " id="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input type="password" name="password" required placeholder=" " id="password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                    <a href="{{ url_for('request_reset') }}" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="{{ url_for('register') }}" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

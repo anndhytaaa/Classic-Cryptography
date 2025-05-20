@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: url('https://static.vecteezy.com/system/resources/previews/020/040/404/non_2x/multi-layers-blue-color-texture-3d-papercut-layers-in-gradient-banner-abstract-paper-cut-art-background-design-for-website-template-topography-map-concept-or-smooth-origami-paper-cut-vector.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1abc9c;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.navigation {
+    display: flex;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.navigation a:hover {
+    color: #1abc9c;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #1abc9c;
+    margin-bottom: 20px;
+}
+
+section p, section ul {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    bottom: 0;
+}
+
+footer p {
+    font-size: 1rem;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigation a {
+        margin: 10px 0;
+    }
+
+    section {
+        padding: 20px;
+    }
+}

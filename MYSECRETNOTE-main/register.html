@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Security Notes App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form action="{{ url_for('register') }}" method="POST">
+                <!-- Username -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]+$" required>
+                    <label>Username</label>
+                </div>
+
+                <!-- Email -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+
+                <!-- Password -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="password" name="password" pattern="^[A-Za-z\d!@#$%^&*()]+$" minlength="8" required>
+                    <label>Password</label>
+                </div>
+
+                <!-- Show Password -->
+                <div class="checkbox-container">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show Password</label>
+                </div>
+
+                <!-- Password Strength Indicator -->
+                <div class="strength-indicator" id="strength-indicator"></div>
+
+                <!-- Terms & Conditions -->
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox" required> I agree to the terms and conditions
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Register</button>
+
+                <!-- Login Link -->
+                <div class="login-register">
+                    <p>Already have an account? <a href="{{ url_for('login') }}" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthIndicator = document.getElementById('strength-indicator');
+        const showPasswordCheckbox = document.getElementById('show-password');
+
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++; // Length
+            if (/[A-Z]/.test(password)) strength++; // Uppercase
+            if (/[a-z]/.test(password)) strength++; // Lowercase
+            if (/\d/.test(password)) strength++; // Number
+            if (/[\W_]/.test(password)) strength++; // Special character
+
+            return strength;
+        }
+
+        passwordInput.addEventListener('input', function() {
+            const strength = checkPasswordStrength(passwordInput.value);
+            strengthIndicator.className = 'strength-indicator'; // Reset class
+
+            if (strength === 0 || strength === 1) {
+                strengthIndicator.classList.add('weak');
+            } else if (strength === 2) {
+                strengthIndicator.classList.add('medium');
+            } else {
+                strengthIndicator.classList.add('strong');
+            }
+        });
+
+        showPasswordCheckbox.addEventListener('change', function() {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+</body>
+</html>

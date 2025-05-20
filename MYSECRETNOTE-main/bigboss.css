@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://static.vecteezy.com/system/resources/previews/020/040/404/non_2x/multi-layers-blue-color-texture-3d-papercut-layers-in-gradient-banner-abstract-paper-cut-art-background-design-for-website-template-topography-map-concept-or-smooth-origami-paper-cut-vector.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #2c3e50, #1abc9c);
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.navigation {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navigation a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f39c12;
+    transform: scale(1.05);
+}
+
+.navigation:last-child {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    color: #fff;
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1abc9c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+textarea, input[type="text"], input[type="file"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.2em;
+    background: #f7f9fa;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+textarea:focus, input:focus {
+    border-color: #1abc9c;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.7);
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+textarea::placeholder, input::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #4285f4, #34a853);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: linear-gradient(45deg, #34a853, #4285f4);
+}
+
+.output {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.2em;
+    color: #333;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    white-space: pre-wrap;
+    overflow-y: auto;
+    height: 200px;
+}
+
+.saved-notes-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.saved-note {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    color: #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.saved-note:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .navigation {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .navigation a {
+        margin: 0 15px;
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bigboss.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">MSN</div>
+            <div class="navigation">
+                <a href="{{ url_for('bigboss') }}">Back to Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <h1>Your Saved Notes</h1>
+
+            <!-- Daftar catatan -->
+            <div class="saved-notes-container">
+                {% if notes %}
+                    {% for note in notes %}
+                        <div class="saved-note">
+                            <div class="saved-note-title">
+                                <strong>{{ note.type | capitalize }}</strong> - {{ note.created_at }}
+                            </div>
+                            <div class="saved-note-content">
+                                {{ note.content }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-notes">
+                        No notes saved yet.
+                    </div>
+                {% endif %}
+            </div>            
+        </div>
+    </div>
+</body>
+</html>
